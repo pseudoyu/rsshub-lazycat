@@ -15,11 +15,11 @@ application:
 
 services:
   rsshub:
-    image: diygod/rsshub:chromium-bundled
+    image: registry.lazycat.cloud/u3055803370/diygod/rsshub:chromium-bundled
     environment:
       - CACHE_TYPE=redis
       - REDIS_URL=redis.cloud.lazycat.app.rsshub.lzcapp:6379
   redis:
-    image: redis/redis-stack-server:latest
+    image: registry.lazycat.cloud/u3055803370/redis/redis-stack-server:6.2.6-v17
     binds:
       - /lzcapp/var/redis:/data
