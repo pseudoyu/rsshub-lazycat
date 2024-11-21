@@ -1,0 +1,25 @@
+lzc-sdk-version: 0.1
+name: RSSHub
+package: cloud.lazycat.app.rsshub
+version: 1.0.0
+description: Everything is RSSible
+license: https://github.com/DIYgod/RSSHub/blob/master/LICENSE
+homepage: https://github.com/DIYgod/RSSHub
+author: DIYgod
+
+application:
+  subdomain: rsshub
+  background_task: true
+  routes:
+    - /=http://rsshub.cloud.lazycat.app.rsshub.lzcapp:1200
+
+services:
+  rsshub:
+    image: diygod/rsshub:chromium-bundled
+    environment:
+      - CACHE_TYPE=redis
+      - REDIS_URL=redis.cloud.lazycat.app.rsshub.lzcapp:6379
+  redis:
+    image: redis/redis-stack-server:latest
+    binds:
+      - /lzcapp/var/redis:/data
